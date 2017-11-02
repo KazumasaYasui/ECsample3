@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ECsample3</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Pangolin|Shrikhand" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <nav class="navbar navbar-default">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" 
+            data-toggle="collapse" data-target="#gnavi">
+              <span class="sr-only">メニュー</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="logo_box">
+              <%= link_to 'Las Montres', root_path, class: 'navbar-brand logo_text' %>
+            </div>
+          </div>
+          <div id="gnavi" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? && current_user.admin? %>
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path,method: :delete %>
+              </li>
+              <li>
+                <%= link_to 'マイページ', user_path(current_user) %>
+              </li>
+              <li>
+                <%= link_to '管理者ページ', rails_admin_path %>
+              </li>
+              <li>
+                <%= link_to "商品一覧", products_path %>
+              </li>
+              <li>
+                <%= link_to '商品登録', new_product_path %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to "ログイン", new_user_session_path %>
+              </li>
+              <li>
+                <%= link_to "商品一覧", products_path %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="login_text">
+            <% if user_signed_in? %>
+              <%= current_user.name %>でログイン中
+            <% end %>
+          </div>
+          <div class="search_box">
+            <%= search_form_for @search, url: products_path do |f| %>
+              <%= f.text_field :name_cont ,placeholder: '商品名を入力してね' %>
+              <%= f.submit "検索" , class: 'btn btn-primary'%>
+            <% end %>
+          </div>
+          <div class="clear"></div>
+        </nav>
+      </header>
+
+      <%= yield %>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<h1>商品詳細ページ</h1>
+
+<%= render_breadcrumbs separator: ' > ' %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div id="carousel-img" class="carousel slide carousel_width_show" data-ride="carousel">
+      <div class="carousel-inner">
+        <% if @product.product_images.present? %>
+          <div class="item active">
+            <%= attachment_image_tag @product.product_images.first, :image, :fill, 500, 500, format: "jpg" %>
+          </div>
+          <% @product.product_images.drop(1).each do |image| %>
+          <div class="item">
+            <%= attachment_image_tag image, :image, :fill, 500, 500, format: "jpg" %>
+          </div>
+          <% end %>
+        <% else %>
+          <div class="item active">
+            <%= image_tag 'no_image.png', size: '500x500' %>
+          </div>
+          <div class="item">
+            <%= image_tag 'no_image2.png', size: '500x500' %>
+          </div>
+        <% end %>
+      </div>
+      <a class="left carousel-control" href="#carousel-img" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-img" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+    <div>商品名：
+      <%= @product.name %>
+    </div>
+    <div>価　格：
+      <%= @product.price %>円
+    </div>
+    <div>説　明：
+      <%= @product.description %>
+    </div>
+    <div>
+      <% if user_signed_in? && current_user.id == @product.user.id %>
+        <%= link_to '商品編集', edit_product_path(@product) %> |
+        <%= link_to '商品削除', product_path(@product), method: :delete,
+          data: {confirm: '本当に削除しますか？'} %> |
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div>
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_box">
+    <div>
+      <p>商品名</p>
+      <%= f.text_field :name, id: :product_name %>
+    </div>
+    <div>
+      <p>価　格</p>
+      <%= f.number_field :price, id: :product_price %>
+    </div>
+    <div>
+      <p>説　明</p>
+      <%= f.text_area :description, id: :product_description %>
+    </div>
+    <div>
+      <p>画　像</p>
+      <%= f.attachment_field :product_images_images, multiple: true %>
+    </div>
+
+    <div class="btn_box">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
