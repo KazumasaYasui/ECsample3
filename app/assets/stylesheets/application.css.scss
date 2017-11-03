@@ -16,10 +16,29 @@
  */
 
 
-/*bootstrap用の設定*/
+/*bootstrapの設定*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+/* レスポンシブの設定 */
+$widthPC: 1024px; //PC
+$widthTab: 768px; //タブレット
+$widthSp: 568px; //スマートフォン
+
+@mixin tab {
+  @media (min-width: $widthTab) and (max-width: ($widthPC)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($widthTab)) {
+    @content;
+  }
+}
+
+
+/* 基本設定 */
 body{
   background-color: #fff;
   color: #000;
@@ -29,12 +48,38 @@ body{
   line-height: 18px;
 }
 
-.logo_box{
-  .logo_text{
-    font-family: 'Pangolin', cursive;
-    font-size: 46px;
-    color: #000 !important;
-  }
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+.clear{
+  clear: both;
+}
+
+
+/* カルーセル関連 */
+.carousel_width_show{
+  width: 500px;
+}
+.carousel_width_index{
+  width: 250px;
+}
+
+
+/* パンくず関連 */
+.breadcrumbs_box{
+  padding: 0 10px 0;
+}
+
+/* ヘッダー関連 */
+.logo_text{
+  font-family: 'Pangolin', cursive;
+  font-size: 46px;
+  color: #000;
 }
 
 .login_text{
@@ -53,28 +98,54 @@ body{
   }
 }
 
-.clear{
-  clear: both;
+
+/* ホームページ関連 */
+.back_container{
+  background-image: url("/back.jpg");
+  border-radius: 50%;
 }
 
-.carousel_width_show{
-  width: 500px;
-}
-.carousel_width_index{
-  width: 200px;
+.home_container{
+  background-color: antiquewhite;
+  opacity: 0.85;
+  border-radius: 50%;
 }
 
-// .index_container{
-//   margin: 0 auto;
-// }
+.home_box{
+  padding: 50px 0;
+  width: 100%;
+  .home_text, .home_sub_text, .home_link_text{
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    padding: 25px 0;
+    @include sp {width: 100%;};
+  }
+  .home_text{
+    font-size: 86px;
+    @include sp {font-size: 36px;};
+  }
+  .home_sub_text{
+    font-size: 16px;
+  }
+}
 
+
+/* 商品一覧・マイページ関連 */
 .product_box{
   padding-bottom: 25px;
 }
 
+.paginate_box{
+  text-align: center;
+}
+
+
+/* 入力フォーム関連 */
 .new_container, .edit_container{
   margin: 0 auto;
   width: 50%;
+  @include sp {width: 100%;};
 }
 
 .form_box{
@@ -119,6 +190,4 @@ body{
   }
 }
 
-.paginate_box{
-  text-align: center;
-}
+

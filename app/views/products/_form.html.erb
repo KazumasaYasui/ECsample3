@@ -12,15 +12,15 @@
   <div class="form_box">
     <div>
       <p>商品名</p>
-      <%= f.text_field :name, id: :product_name %>
+      <%= f.text_field :name, id: :product_name, placeholder: "例）Hublot" %>
     </div>
     <div>
       <p>価　格</p>
-      <%= f.number_field :price, id: :product_price %>
+      <%= f.number_field :price, id: :product_price, placeholder: "数字で入力してください／円" %>
     </div>
     <div>
       <p>説　明</p>
-      <%= f.text_area :description, id: :product_description %>
+      <%= f.text_area :description, id: :product_description, placeholder: "500文字以内で入力してください" %>
     </div>
     <div>
       <p>画　像</p>

@@ -1,7 +1,5 @@
 <h2>ユーザー登録ページ</h2>
 
-<%= render_breadcrumbs separator: ' > ' %>
-
 <div class="user_form_container">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
