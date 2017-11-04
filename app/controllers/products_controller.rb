@@ -4,9 +4,9 @@ class ProductsController < ApplicationController
                 only: [:new, :edit, :create, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
 
+  add_breadcrumb '商品一覧', :products_path
 
   def index
-    add_breadcrumb '商品一覧', :products_path
     @products = Product.all.order(created_at: :desc).page(
       params[:page])
   end
