@@ -131,13 +131,66 @@ ul{
 }
 
 
-/* 商品一覧・マイページ関連 */
-.product_box{
-  padding-bottom: 25px;
+/* 商品一覧ページ・マイページ関連 */
+.products_box, .my_products_box{
+  padding-bottom: 50px;
+}
+
+.products_name_box, .my_products_name_box{
+  padding: 5px 5px 0;
+}
+
+.products_price_box, .my_products_price_box{
+  padding: 0 5px 0;
 }
 
 .paginate_box{
   text-align: center;
+}
+
+
+/* 商品詳細ページ関連 */
+.show_name_box{
+  font-size: 24px;
+  padding: 0 5px 10px;
+}
+
+.show_price_box, .show_description_box,
+.show_brand_box{
+  font-size: 16px;
+}
+
+.show_price_box{
+  padding: 10px 5px 0;
+}
+
+.show_brand_box{
+  padding: 0 5px 0;
+}
+
+.show_description_box{
+  padding: 0 5px 10px;
+}
+
+.show_link_box{
+  padding: 0 5px 0;
+}
+
+/* カテゴリ一覧・詳細ページ関連 */
+.categories_box, .category_box{
+  padding-bottom: 50px;
+}
+
+.categories_brand_box{
+  font-size: 24px;
+}
+
+.category_products_name_box{
+  padding: 5px 5px 0;
+}
+
+.category_products_price_box{
+  padding: 0 5px 0;
 }
 
 

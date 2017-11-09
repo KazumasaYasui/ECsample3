@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  add_breadcrumb 'マイページ'
 
   def index
     @users = User.all.order(created_at: :desc)
@@ -7,5 +6,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    add_breadcrumb "#{@user.name}のマイページ"
+    @products = @user.products
+                     .includes(:product_images)
+                     .page(params[:page])
+                     .order(created_at: :desc)
   end
 end

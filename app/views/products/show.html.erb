@@ -2,6 +2,9 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <div class="show_name_box">商品名：
+      <%= @product.name %>
+    </div>
     <div id="carousel-img" class="carousel slide carousel_width_show" data-ride="carousel">
       <div class="carousel-inner">
         <% if @product.product_images.present? %>
@@ -29,16 +32,16 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       </a>
     </div>
-    <div>商品名：
-      <%= @product.name %>
-    </div>
-    <div>価　格：
+    <div class="show_price_box">価格：
       <%= @product.price %>円
     </div>
-    <div>説　明：
+    <div class="show_brand_box">ブランド名：
+      <%= @product.category.brand %>
+    </div>
+    <div class="show_description_box">説明：
       <%= @product.description %>
     </div>
-    <div>
+    <div class="show_link_box">
       <% if user_signed_in? && current_user.id == @product.user.id %>
         <%= link_to '商品編集', edit_product_path(@product) %> |
         <%= link_to '商品削除', product_path(@product), method: :delete,

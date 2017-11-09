@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
-  resources :users, only:[:index, :show]
+  resources :users, only:[:index, :show,]
+  resources :categories, only:[:index, :show]
   resources :products
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'

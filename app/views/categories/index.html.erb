@@ -1,0 +1,15 @@
+<h1>ブランド一覧ページ</h1>
+
+<div class="row">
+  <% @categories.each do |category| %>
+    <div class="col-md-4 categories_box">
+      <%= link_to category_path(category) do %>
+        <div class="categories_brand_box">
+          <%= category.brand %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+

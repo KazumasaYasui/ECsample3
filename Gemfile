@@ -67,10 +67,17 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
-gem 'ransack'
+# gem 'ransack'
 
 gem 'breadcrumbs_on_rails'
 
 gem 'rails_admin'
 gem 'safe_yaml'
 gem 'syck'
+
+group :development do
+  gem 'bullet'
+end
+
+# add gem
+# gem 'pry-rails'

@@ -7,13 +7,16 @@ class ProductsController < ApplicationController
   add_breadcrumb '商品一覧', :products_path
 
   def index
-    @products = Product.all.order(created_at: :desc).page(
-      params[:page])
+    @products = Product.all.includes(:product_images)
+                       .order(created_at: :desc)
+                       .page(params[:page])
+                       .search(params[:search])
   end
 
   def show
     add_breadcrumb '商品詳細'
     add_breadcrumb @product.name
+    # binding.pry
   end
 
   def new
@@ -39,7 +42,7 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
       redirect_to @product
-      # notice: 'Post was successfully updated.'
+      # notice: 'Product was successfully updated.'
     else
       render :edit
     end
@@ -48,7 +51,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
       redirect_to products_path
-      # notice: 'Post was successfully destroyed.'
+      # notice: 'Product was successfully destroyed.'
   end
 
   private
@@ -57,10 +60,11 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(
-        :name, :price, :description, :user_id,
-        product_images_images: []
-      )
+      params.require(:product)
+            .permit(
+              :name, :price, :description, :user_id, :category_id,
+              product_images_images: []
+            )
     end
 
     def correct_user
