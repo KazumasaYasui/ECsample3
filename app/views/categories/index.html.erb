@@ -4,10 +4,73 @@
   <% @categories.each do |category| %>
     <div class="col-md-4 categories_box">
       <%= link_to category_path(category) do %>
-        <div class="categories_brand_box">
+        <div class="categories_brand_name_box">
           <%= category.brand %>
         </div>
       <% end %>
+      <div class="categories_brand_description_box">
+        <% if category.id == 1 %>
+          <p>創業年：1905年</p>
+          <p>創業国：イギリス／ロンドン</p>
+          <p>予算：70万円～100万円</p>
+        <% elsif category.id == 2 %>
+          <p>創業年：1860年</p>
+          <p>創業国：スイス／ラ・ショード・フォン</p>
+          <p>予算：30万円～80万円</p>
+        <% elsif category.id == 3 %>
+          <p>創業年：1848年</p>
+          <p>創業国：スイス／サンティミエ</p>
+          <p>予算：50万円～70万円</p>
+        <% elsif category.id == 4 %>
+          <p>創業年：1960年</p>
+          <p>創業国：日本／東京</p>
+          <p>予算：40万円～80万円</p>
+        <% elsif category.id == 5 %>
+          <p>創業年：1884年</p>
+          <p>創業国：スイス／サンティミエ</p>
+          <p>予算：70万円～100万円</p>
+        <% elsif category.id == 6 %>
+          <p>創業年：1868年</p>
+          <p>創業国：スイス・シャフハウゼン</p>
+          <p>予算：80万円～130万円</p>
+        <% elsif category.id == 7 %>
+          <p>創業年：1839年</p>
+          <p>創業国：スイス／ジュネーブ</p>
+          <p>予算：300万円～500万円</p>
+        <% elsif category.id == 8 %>
+          <p>創業年：1833年</p>
+          <p>創業国：スイス／ル・サンティエ</p>
+          <p>予算：80万円～120万円</p>
+        <% elsif category.id == 9 %>
+          <p>創業年：1980年</p>
+          <p>創業国：スイス・ニヨン</p>
+          <p>予算：200万円～300万円</p>
+        <% elsif category.id == 10 %>
+          <p>創業年：1865年</p>
+          <p>創業国：スイス／ル・ロックル</p>
+          <p>予算：70万円～90万円</p>
+        <% elsif category.id == 11 %>
+          <p>創業年：1875年</p>
+          <p>創業国：スイス／ル・グラッシュ</p>
+          <p>予算：150万円～300万円</p>
+        <% elsif category.id == 12 %>
+          <p>創業年：1884年</p>
+          <p>創業国：イタリア／ローマ</p>
+          <p>予算：80万円～100万円</p>
+        <% elsif category.id == 13 %>
+          <p>創業年：1847年</p>
+          <p>創業国：フランス／パリ</p>
+          <p>予算：90万円～130万円</p>
+        <% elsif category.id == 14 %>
+          <p>創業年：1860年</p>
+          <p>創業国：イタリア</p>
+          <p>予算：70万円～100万円</p>
+        <% elsif category.id == 15 %>
+          <p>創業年：1755年</p>
+          <p>創業国：スイス／ジュネーブ</p>
+          <p>予算：200万円～300万円</p>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

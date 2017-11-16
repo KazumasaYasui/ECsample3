@@ -1,12 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!,
-                only: [:new, :edit, :create, :update, :destroy]
+                except: [:index, :show]
   before_action :correct_user, only: [:edit, :update]
 
   add_breadcrumb '商品一覧', :products_path
 
   def index
+    # reset_session
     @products = Product.all.includes(:product_images)
                        .order(created_at: :desc)
                        .page(params[:page])
@@ -62,8 +63,8 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product)
             .permit(
-              :name, :price, :description, :user_id, :category_id,
-              product_images_images: []
+              :name, :price, :description, :quantity, :user_id,
+              :category_id,product_images_images: []
             )
     end
 

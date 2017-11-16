@@ -16,7 +16,13 @@
     </div>
     <div>
       <p>価格</p>
-      <%= f.number_field :price, id: :product_price, placeholder: "数字で入力してください／円" %>
+      <%= f.number_field :price, id: :product_price,
+        placeholder: "数値で入力してください／円" %>
+    </div>
+    <div>
+      <p>数量</p>
+      <%= f.number_field :quantity, id: :product_quantity,
+        placeholder: "数値で入力してください／個" %>
     </div>
     <div>
       <p>説明</p>

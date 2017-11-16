@@ -75,6 +75,7 @@ ul{
   padding: 0 10px 0;
 }
 
+
 /* ヘッダー関連 */
 .logo_text{
   font-family: 'Pangolin', cursive;
@@ -96,6 +97,13 @@ ul{
     line-height: 25px;
     padding: 0 10px;
   }
+}
+
+
+/* エラー関連 */
+#notice{
+  color: tomato;
+  text-align: center;
 }
 
 
@@ -155,8 +163,9 @@ ul{
   padding: 0 5px 10px;
 }
 
-.show_price_box, .show_description_box,
-.show_brand_box{
+.show_price_box, .show_quantity_box,
+.show_description_box, .show_brand_box,
+.add_to_cart_box{
   font-size: 16px;
 }
 
@@ -164,7 +173,7 @@ ul{
   padding: 10px 5px 0;
 }
 
-.show_brand_box{
+.show_quantity_box, .show_brand_box{
   padding: 0 5px 0;
 }
 
@@ -173,16 +182,47 @@ ul{
 }
 
 .show_link_box{
+  padding: 0 5px 10px;
+}
+
+.add_to_cart_box{
+  padding: 0 5px 10px;
+  .add_to_cart_number{
+    display: inline;
+    input[type="number"] {
+    width: 25%;
+    border-radius: 5px;
+    line-height: 30px;
+    padding: 0 15px;
+    }
+  }
+  .add_to_cart_btn{
+    display: inline;
+  }
+}
+
+
+/* カテゴリ一覧・詳細ページ関連 */
+.categories_box{
+  padding-bottom: 25px;
+}
+
+.categories_brand_name_box{
+  font-size: 24px;
+  font-family: 'Sumana', serif;
   padding: 0 5px 0;
 }
 
-/* カテゴリ一覧・詳細ページ関連 */
-.categories_box, .category_box{
-  padding-bottom: 50px;
+.categories_brand_description_box{
+  padding: 10px 10px 0;
 }
 
-.categories_brand_box{
-  font-size: 24px;
+.category_brand_name_box{
+  font-family: 'Lora', serif;
+}
+
+.category_box{
+  padding-bottom: 50px;
 }
 
 .category_products_name_box{
@@ -241,6 +281,34 @@ ul{
   .actions{
     text-align: center;
   }
+}
+
+
+/* カートページ関連 */
+th{
+  span{
+    padding-left: 10px;
+  }
+}
+
+td{
+  input[type="number"] {
+    // width: 50%;
+    border-radius: 5px;
+    line-height: 30px;
+    padding: 0 15px;
+  }
+}
+
+.view_order_subtotal_box, .view_order_tax_box{
+  padding: 0 10px 10px;
+  font-size: 16px;
+}
+
+.view_order_grandtotal_box{
+  padding: 10px 10px 0;
+  font-size: 18px;
+  border-top: 1px solid silver;
 }
 
 

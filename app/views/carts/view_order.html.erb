@@ -1,0 +1,56 @@
+<h1>ショッピングカート</h1>
+
+<% if @line_items.blank? %>
+  <div>
+    カートは空です。<%= link_to "商品一覧", products_path %>へ戻る。
+  </div>
+<% else %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>価格／円</th>
+        <th>数量／個</th>
+        <th>小計／円</th>
+        <th>数量変更／個<span id="notice"><%= notice %></span></th>
+        <th>商品削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @line_items.each do |line_item| %>
+        <tr>
+          <td><%= line_item.product.name %></td>
+          <td><%= number_to_currency line_item.unit_price,
+                  format: '%n%u', unit: '円', precision: 0 %></td>
+          <td><%= line_item.quantity %>個</td>
+          <td><%= number_to_currency line_item.total_price,
+                  format: '%n%u', unit: '円', precision: 0 %></td>
+          <td>
+            <%= form_tag update_cart_path(line_item_id: line_item.id), method: :post do %>
+              <%= number_field_tag :quantity, line_item.quantity, min: 1, placeholder: '個数を入力' %>
+              <%= hidden_field_tag :product_id, line_item.product.id %>
+              <%= submit_tag '変更', class: 'btn btn-primary' %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to '削除', delete_cart_path(line_item_id: line_item.id), method: :delete, class: 'btn btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="view_order_subtotal_box">
+    合計：<%= number_to_currency @order.sub_total,
+             format: '%n%u', unit: '円', precision: 0 %>（税抜）
+  </div>
+  <div class="view_order_tax_box">
+    税金：<%= number_to_currency @order.tax.round,
+             format: '%n%u', unit: '円', precision: 0 %>（税率8%）
+  </div>
+  <div class="view_order_grandtotal_box">
+    合計：<%= number_to_currency @order.grand_total,
+             format: '%n%u', unit: '円', precision: 0 %>（税込）
+  </div>
+<% end %>
+
+

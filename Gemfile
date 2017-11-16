@@ -80,4 +80,4 @@ group :development do
 end
 
 # add gem
-# gem 'pry-rails'
+gem 'pry-rails'
