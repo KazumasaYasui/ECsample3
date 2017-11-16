@@ -18,10 +18,16 @@
           <% end %>
         <% else %>
           <div class="item active">
-            <%= image_tag 'no_image.png', size: '500x500' %>
+            <%= image_tag 'sample_image_1.jpg', size: '500x500' %>
           </div>
           <div class="item">
-            <%= image_tag 'no_image2.png', size: '500x500' %>
+            <%= image_tag 'sample_image_2.jpg', size: '500x500' %>
+          </div>
+          <div class="item">
+            <%= image_tag 'sample_image_3.jpg', size: '500x500' %>
+          </div>
+          <div class="item">
+            <%= image_tag 'sample_image_4.jpg', size: '500x500' %>
           </div>
         <% end %>
       </div>
@@ -45,17 +51,36 @@
       <%= @product.description %>
     </div>
     <p id="notice"><%= notice %></p>
-    <div class="add_to_cart_box">
-      <%= form_tag add_to_cart_path, method: :post do %>
-        <div class="add_to_cart_number">個数：
-          <%= number_field_tag :quantity, 0, min: 1, placeholder: '個数を入力' %>
-          <%= hidden_field_tag :product_id, @product.id %>
-        </div>
-        <div class="add_to_cart_btn">
-          <%= submit_tag 'カートに追加', class: 'btn btn-primary' %>
-        </div>
+
+    <% if @line_item_product_id.include? @product.id %>
+      <div class="add_to_cart_box">
+      <% @line_item.each do |line_item| %>
+        <% if line_item.product_id == @product.id %>
+          <%= form_tag update_cart_path(line_item_id: line_item.id), method: :post do %>
+            <div class="add_to_cart_number">個数：
+              <%= number_field_tag :quantity, line_item.quantity, min: 1, placeholder: '個数を入力' %>
+              <%= hidden_field_tag :product_id, line_item.product.id %>
+            </div>
+            <div class="add_to_cart_btn">
+              <%= submit_tag '個数を変更', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
-    </div>
+      </div>
+    <% else %>
+      <div class="add_to_cart_box">
+        <%= form_tag add_to_cart_path, method: :post do %>
+          <div class="add_to_cart_number">個数：
+            <%= number_field_tag :quantity, 0, min: 1, placeholder: '個数を入力' %>
+            <%= hidden_field_tag :product_id, @product.id %>
+          </div>
+          <div class="add_to_cart_btn">
+            <%= submit_tag 'カートに追加', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
     <div class="show_link_box">
       <% if user_signed_in? && current_user.id == @product.user.id %>

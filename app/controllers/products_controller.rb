@@ -17,6 +17,8 @@ class ProductsController < ApplicationController
   def show
     add_breadcrumb '商品詳細'
     add_breadcrumb @product.name
+    @line_item = current_order.line_items.includes(:product)
+    @line_item_product_id = @line_item.pluck(:product_id)
     # binding.pry
   end
 
