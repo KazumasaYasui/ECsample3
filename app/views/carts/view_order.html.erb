@@ -8,6 +8,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <th>商品画像</th>
         <th>商品名</th>
         <th>価格／円</th>
         <th>数量／個</th>
@@ -19,6 +20,19 @@
     <tbody>
       <% @line_items.each do |line_item| %>
         <tr>
+          <td>
+            <div class="cart_img_width">
+              <% if line_item.product.product_images.present? %>
+                <div class="cart_img">
+                  <%= attachment_image_tag line_item.product.product_images.first, :image, :fill, 120, 120, format: "jpg" %>
+                </div>
+              <% else %>
+                <div class="cart_img">
+                  <%= image_tag 'sample_image_1.jpg', size: '120x120' %>
+                </div>
+              <% end %>
+            </div>
+          </td>
           <td><%= line_item.product.name %></td>
           <td><%= number_to_currency line_item.unit_price,
                   format: '%n%u', unit: '円', precision: 0 %></td>

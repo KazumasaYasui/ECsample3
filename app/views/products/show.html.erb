@@ -31,15 +31,16 @@
           </div>
         <% end %>
       </div>
-      <a class="left carousel-control" href="#carousel-img" data-slide="prev">
+      <a class="left carousel-control fix" href="#carousel-img" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
-      <a class="right carousel-control" href="#carousel-img" data-slide="next">
+      <a class="right carousel-control fix" href="#carousel-img" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       </a>
     </div>
     <div class="show_price_box">価格：
-      <%= @product.price %>円
+      <%= number_to_currency @product.price,
+                  format: '%n%u', unit: '円', precision: 0 %>
     </div>
     <div class="show_quantity_box">在庫：
       <%= @product.quantity %>個

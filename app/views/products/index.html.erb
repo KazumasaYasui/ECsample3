@@ -33,10 +33,10 @@
                     </div>
                   <% end %>
                 </div>
-                <a class="left carousel-control" href= "#<%= product.id %>" data-slide="prev">
+                <a class="left carousel-control fix" href= "#<%= product.id %>" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 </a>
-                <a class="right carousel-control" href= "#<%= product.id %>" data-slide="next">
+                <a class="right carousel-control fix" href= "#<%= product.id %>" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 </a>
               </div>
@@ -44,7 +44,8 @@
                 <%= product.name %>
               </div>
               <div class="products_price_box">価格：
-                <%= product.price %>円
+                <%= number_to_currency product.price,
+                  format: '%n%u', unit: '円', precision: 0 %>
               </div>
             <% end %>
           </div>

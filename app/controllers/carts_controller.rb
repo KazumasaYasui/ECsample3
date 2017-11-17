@@ -24,7 +24,7 @@ class CartsController < ApplicationController
   def view_order
     add_breadcrumb 'ショッピングカート'
     @order = current_order
-    @line_items = @order.line_items.includes(:product)
+    @line_items = @order.line_items.includes(product: :product_images)
     @order.sub_total = 0
     @line_items.each do |line_item|
         @order.sub_total += line_item.total_price
