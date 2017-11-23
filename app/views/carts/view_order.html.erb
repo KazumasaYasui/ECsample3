@@ -65,6 +65,9 @@
     合計：<%= number_to_currency @order.grand_total,
              format: '%n%u', unit: '円', precision: 0 %>（税込）
   </div>
+  <div class="view_order_checkout_btn_box">
+    <%= link_to "注文へ", checkout_path, class: 'btn btn-success' %>
+  </div>
 <% end %>
 
 

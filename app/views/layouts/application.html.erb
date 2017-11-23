@@ -33,7 +33,10 @@
                   <%= link_to "ログアウト", destroy_user_session_path,method: :delete %>
                 </li>
                 <li>
-                  <%= link_to 'マイページ', user_path(current_user) %>
+                  <%= link_to '出品一覧ページ', user_path(current_user) %>
+                </li>
+                <li>
+                  <%= link_to 'マイページ', mypage_user_path(current_user) %>
                 </li>
                 <li>
                   <%= link_to '管理者ページ', rails_admin_path %>
@@ -50,6 +53,9 @@
               <% elsif user_signed_in? && current_user.admin == false %>
                 <li>
                   <%= link_to "ログアウト", destroy_user_session_path,method: :delete %>
+                </li>
+                <li>
+                  <%= link_to 'マイページ', mypage_user_path(current_user) %>
                 </li>
                 <li>
                   <%= link_to "商品一覧", products_path %>

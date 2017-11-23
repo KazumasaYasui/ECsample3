@@ -1,0 +1,73 @@
+<h1>注文画面</h1>
+
+<% if @order != nil %>
+  <div class="checkout_subtotal_box">
+    合計：<%= number_to_currency @order.sub_total,
+             format: '%n%u', unit: '円', precision: 0 %>（税抜）
+  </div>
+  <div class="checkout_tax_box">
+    税金：<%= number_to_currency @order.tax.round,
+             format: '%n%u', unit: '円', precision: 0 %>（税率8%）
+  </div>
+  <div class="checkout_grandtotal_box">
+    合計：<%= number_to_currency @order.grand_total,
+             format: '%n%u', unit: '円', precision: 0 %>（税込）
+  </div>
+
+  <h2 class="checkout_sub_title">購入者情報入力</h2>
+  <%= form_for(@order, url: order_complete_path) do |f| %>
+    <% if @order.errors.any? %>
+      <div id="error_box">
+        <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="checkout_form_box">
+      <div>
+        <p>購入者氏名</p>
+        <%= f.text_field :cust_name, placeholder: '例）山田太郎',
+            value: current_user.name %>
+      </div>
+      <div>
+        <p>購入者E-mail</p>
+        <%= f.email_field :cust_email,
+            placeholder: '例）lasmontres@email.com',
+            value: current_user.email %>
+      </div>
+      <div>
+        <p>購入者TEL</p>
+        <%= f.text_field :cust_tel,
+            placeholder: '例）080-1234-5678' %>
+      </div>
+      <div>
+        <p>郵便番号</p>
+        <%= f.number_field :cust_postal_code,
+            placeholder: '数値で入力してください　例）1000014' %>
+      </div>
+      <div>
+        <p>都道府県</p>
+        <%= f.select :cust_prefecture,
+            Order.cust_prefectures_i18n.keys.
+            map{|k| [Order.cust_prefectures_i18n[k], k]},
+            {prompt: '選択してください'},
+            class: 'form-control btn btn-info' %>
+      </div>
+      <div>
+        <p>市区町村</p>
+        <%= f.text_field :cust_city,
+            placeholder: '例）千代田区永田町' %>
+      </div>
+      <div>
+        <p>丁目・番地・号</p>
+        <%= f.text_field :cust_street,
+            placeholder: '例）１−７−１' %>
+      </div>
+      <div class="order_complete_btn_box">
+        <%= f.submit '注文決定', class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

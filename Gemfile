@@ -75,6 +75,9 @@ gem 'rails_admin'
 gem 'safe_yaml'
 gem 'syck'
 
+gem 'enum_help'
+gem 'rails-i18n'
+
 group :development do
   gem 'bullet'
 end

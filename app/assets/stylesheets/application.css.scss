@@ -40,7 +40,7 @@ $widthSp: 568px; //スマートフォン
 
 /* 基本設定 */
 body{
-  background-color: #fff;
+  background-color: whitesmoke;
   color: #000;
   margin: 0px;
   font-family: verdana, arial, helvetica, sans-serif;
@@ -116,6 +116,21 @@ ul{
   text-align: center;
 }
 
+#error_box{
+  background-color: ivory;
+  color: crimson;
+  width: 400px;
+  padding: 10px 0 5px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+#error_explanation{
+  color: crimson;
+  h2{
+    font-size: 20px;
+  }
+}
 
 /* ホームページ関連 */
 .back_container{
@@ -149,7 +164,7 @@ ul{
 }
 
 
-/* 商品一覧ページ・マイページ関連 */
+/* 商品一覧ページ・出品一覧ページ関連 */
 .products_box, .my_products_box{
   padding: 50px 0 50px;
   border-bottom: 1px solid silver;
@@ -171,6 +186,61 @@ ul{
 
 .paginate_box{
   text-align: center;
+}
+
+
+/* 一般ユーザーマイページ関連 */
+.cust_mypage_box{
+  width: 80%;
+  margin: 0 auto;
+  .cust_mypage_subtitle{
+    padding: 10px 0 10px;
+    margin: 0;
+  }
+  .cust_order_box{
+    border-bottom: 1px solid silver;
+    margin: 20px;
+    .cust_order_text_box{
+      padding-left: 80px;
+    }
+    table{
+      width: 80%;
+      margin: 0 auto;
+      .cust_line_item_box{
+        padding: 10px;
+        width: 25%;
+        font-size: 20px;
+      }
+      .cust_mypage_img_width{
+        width: 120px;
+      }
+    }
+  }
+}
+
+
+/* 管理者マイページ関連 */
+.admin_mypage_box{
+  .admin_mypage_subtitle{
+    padding: 10px 30px 10px;
+    margin: 0;
+  }
+  table{
+    width: 80%;
+    margin: 0 auto;
+    tbody{
+      tr{
+        border-bottom: 1px solid silver;
+        .admin_line_item_box{
+          padding: 20px 50px 20px;
+          font-size: 16px;
+        }
+        .admin_mypage_img_width{
+          width: 120px;
+        }
+      }
+    }
+  }
 }
 
 
@@ -343,4 +413,54 @@ td{
   margin-right: -38px;
 }
 
+.view_order_checkout_btn_box{
+  padding: 20px 0 0;
+  width: 100px;
+  margin: 0 auto;
+}
+
+
+/* 注文画面関連 */
+.checkout_subtotal_box{
+  padding: 10px 20px 5px;
+  font-size: 16px;
+}
+
+.checkout_tax_box{
+  padding: 5px 20px 5px;
+  font-size: 16px;
+}
+
+.checkout_grandtotal_box{
+  padding: 5px 20px 40px;
+  font-size: 18px;
+  border-bottom: 1px solid silver;
+}
+
+.checkout_sub_title{
+  padding: 10px 0 20px;
+  text-align: center;
+}
+
+.checkout_form_box{
+  div{
+    padding: 10px 0 10px;
+    width: 500px;
+    margin: 0 auto;
+    p{
+      margin: 0;
+    }
+  }
+  input[type="text"],
+  input[type="number"],
+  input[type="email"] {
+    width: 100%;
+    border-radius: 5px;
+    line-height: 30px;
+    padding: 0 10px;
+  }
+  .order_complete_btn_box{
+    text-align: center;
+  }
+}
 

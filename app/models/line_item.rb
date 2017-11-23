@@ -4,11 +4,4 @@ class LineItem < ApplicationRecord
 
   validates :quantity, presence: true
 
-  # def self.unit_price
-  #   product.price
-  # end
-
-  # def self.total_price
-  #   unit_price * quantity
-  # end
 end

@@ -6,10 +6,27 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    add_breadcrumb "#{@user.name}のマイページ"
-    @products = @user.products
-                     .includes(:product_images)
-                     .page(params[:page])
-                     .order(created_at: :desc)
+    add_breadcrumb "#{@user.name}の出品ページ"
+    if current_user.admin?
+      @products = @user.products
+                       .includes(:product_images)
+                       .page(params[:page]).per(24)
+                       .order(created_at: :desc)
+    end
   end
+
+  def mypage
+    @user = User.find(params[:id])
+    add_breadcrumb "#{@user.name}のマイページ"
+    if current_user.admin?
+      @user_product = @user.products
+                           .includes(line_items: :order)
+      # binding.pry
+    else
+      @orders = @user.orders.includes(
+        line_items: { product: :product_images }
+      )
+    end
+  end
+
 end

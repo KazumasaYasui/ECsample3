@@ -1,6 +1,6 @@
 <%= form_for(product) do |f| %>
   <% if product.errors.any? %>
-    <div>
+    <div id="error_box">
       <ul>
       <% product.errors.full_messages.each do |message| %>
         <li><%= message %></li>

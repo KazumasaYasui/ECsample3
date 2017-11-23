@@ -1,0 +1,43 @@
+<h1><%= @user.name %>のマイページ</h1>
+
+<div class="admin_mypage_box">
+<h2 class="admin_mypage_subtitle">注文履歴</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>注文商品名</th>
+        <th>注文個数</th>
+        <th>注文金額</th>
+        <th>注文者</th>
+        <th>注文日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_product.each do |product| %>
+        <% product.line_items.each do |line_item| %>
+          <% if line_item.present? %>
+            <tr>
+              <td class="admin_line_item_box">
+                <%= line_item.product.name %>
+              </td>
+              <td class="admin_line_item_box">
+                <%= line_item.quantity %>個
+              </td>
+              <td class="admin_line_item_box">
+                <%= number_to_currency line_item.total_price,
+                    format: '%n%u', unit: '円', precision: 0 %>
+              </td>
+              <td>
+                <%= line_item.order.cust_name %>
+              </td>
+              <td class="admin_line_item_box">
+                <%= line_item.order.updated_at.in_time_zone('Tokyo')
+                    .strftime("%Y年%m月%d日 %H時%M分") %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

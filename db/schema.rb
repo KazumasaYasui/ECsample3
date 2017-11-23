@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113060346) do
+ActiveRecord::Schema.define(version: 20171117065651) do
 
   create_table "categories", force: :cascade do |t|
     t.string "brand"
@@ -34,8 +34,16 @@ ActiveRecord::Schema.define(version: 20171113060346) do
     t.integer "sub_total"
     t.integer "tax"
     t.integer "grand_total"
+    t.string "cust_name"
+    t.string "cust_tel"
+    t.string "cust_email"
+    t.string "cust_postal_code"
+    t.integer "cust_prefecture"
+    t.string "cust_city"
+    t.string "cust_street"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "product_images", force: :cascade do |t|

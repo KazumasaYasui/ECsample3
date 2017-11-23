@@ -1,0 +1,46 @@
+<h1><%= @user.name %>のマイページ</h1>
+
+<div class="cust_mypage_box">
+  <h2 class="cust_mypage_subtitle">購入履歴</h2>
+  <% if @orders.present? %>
+    <% @orders.each do |order| %>
+      <div class="cust_order_box">
+        <div class="cust_order_text_box">
+          <%= order.updated_at.in_time_zone('Tokyo')
+            .strftime("%Y年%m月%d日") %>の注文
+        </div>
+        <table>
+          <tbody>
+            <% order.line_items.each do |line_item| %>
+              <tr>
+                <td class="cust_line_item_box">
+                  <div class="cust_mypage_img_width">
+                    <% if line_item.product.product_images.present? %>
+                      <div class="cust_mypage_img">
+                        <%= attachment_image_tag line_item.product.product_images.first, :image, :fill, 120, 120, format: "jpg" %>
+                      </div>
+                    <% else %>
+                      <div class="cust_mypage_img">
+                        <%= image_tag 'sample_image_1.jpg', size: '120x120' %>
+                      </div>
+                    <% end %>
+                  </div>
+                </td>
+                <td class="cust_line_item_box">
+                  <%= line_item.product.name %>
+                </td>
+                <td class="cust_line_item_box">
+                  <%= line_item.quantity %>個
+                </td>
+                <td class="cust_line_item_box">
+                  <%= number_to_currency line_item.total_price,
+                    format: '%n%u', unit: '円', precision: 0 %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  <% end %>
+</div>

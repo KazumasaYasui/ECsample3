@@ -6,5 +6,5 @@ class User < ApplicationRecord
          :registerable
 
   has_many :products
-  # has_many :orders
+  has_many :orders#, validate: :false
 end
