@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     if current_user.admin?
       @user_product = @user.products
                            .includes(line_items: :order)
-      # binding.pry
     else
       @orders = @user.orders.includes(
         line_items: { product: :product_images }

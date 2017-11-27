@@ -17,7 +17,6 @@ class CartsController < ApplicationController
       @line_item.total_price =
         @line_item.unit_price * @line_item.quantity
       @line_item.save
-    # binding.pry
       redirect_to view_order_path
     else
       redirect_to @product, notice: "在庫が足りません"
@@ -78,12 +77,12 @@ class CartsController < ApplicationController
     @line_items = @order.line_items
     @order.attributes = cust_info_params
     if @order.save(context: :order_complete)
+      OrderMailer.send_when_order(current_user).deliver
       redirect_to products_path, notice: '注文が確定しました。'
       @line_items.each do |line_item|
         line_item.product.quantity -=line_item.quantity
         line_item.product.save
       end
-      # @order.line_items.destroy_all
       session[:order_id] = nil
     else
       render :checkout

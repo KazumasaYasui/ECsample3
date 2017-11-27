@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
   add_breadcrumb '商品一覧', :products_path
 
   def index
-    # reset_session
     @products = Product.all.includes(:product_images)
                        .order(created_at: :desc)
                        .page(params[:page])
@@ -19,7 +18,6 @@ class ProductsController < ApplicationController
     add_breadcrumb @product.name
     @line_item = current_order.line_items.includes(:product)
     @line_item_product_id = @line_item.pluck(:product_id)
-    # binding.pry
   end
 
   def new

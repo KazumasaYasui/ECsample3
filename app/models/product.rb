@@ -12,7 +12,6 @@ class Product < ApplicationRecord
   validates :description, length: {maximum: 500}
 
   accepts_attachments_for :product_images, attachment: :image
-  # validates_presence_of :image
 
   def self.search(search)
     if search
