@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!,
                 except: [:index, :show]
   before_action :correct_user, only: [:edit, :update]
@@ -21,8 +21,12 @@ class ProductsController < ApplicationController
   end
 
   def new
-    add_breadcrumb '商品登録'
-    @product = Product.new
+    if current_user.admin?
+      add_breadcrumb '商品登録'
+      @product = Product.new
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -53,7 +57,7 @@ class ProductsController < ApplicationController
   end
 
   private
-    def set_post
+    def set_product
       @product = Product.find(params[:id])
     end
 
