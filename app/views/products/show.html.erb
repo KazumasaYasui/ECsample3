@@ -8,11 +8,8 @@
     <div id="carousel-img" class="carousel slide carousel_width_show" data-ride="carousel">
       <div class="carousel-inner">
         <% if @product.product_images.present? %>
-          <div class="item active">
-            <%= attachment_image_tag @product.product_images.first, :image, :fill, 500, 500, format: "jpg" %>
-          </div>
-          <% @product.product_images.drop(1).each do |image| %>
-          <div class="item">
+          <% @product.product_images.each_with_index do |image, i| %>
+          <div class="<%= i == 0 ? 'item active' : 'item' %>">
             <%= attachment_image_tag image, :image, :fill, 500, 500, format: "jpg" %>
           </div>
           <% end %>
@@ -31,11 +28,23 @@
           </div>
         <% end %>
       </div>
+      <ol class="carousel-indicators">
+        <% if @product.product_images.present? %>
+          <% @product.product_images.each_with_index do |image, i| %>
+            <li data-target="#carousel-img" data-slide-to="<%= i %>" class="<%= i == 0 ? 'active' : '' %>"></li>
+          <% end %>
+        <% else %>
+          <li data-target="#carousel-img" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-img" data-slide-to="1"></li>
+          <li data-target="#carousel-img" data-slide-to="2"></li>
+          <li data-target="#carousel-img" data-slide-to="3"></li>
+        <% end %>
+      </ol>
       <a class="left carousel-control fix" href="#carousel-img" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="fa fa-caret-left glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control fix" href="#carousel-img" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="fa fa-caret-right glyphicon-chevron-right" aria-hidden="true"></span>
       </a>
     </div>
     <div class="show_price_box">価格：

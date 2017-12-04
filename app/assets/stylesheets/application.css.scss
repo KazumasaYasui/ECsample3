@@ -19,6 +19,7 @@
 /*bootstrapの設定*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 
 /* レスポンシブの設定 */
@@ -65,9 +66,9 @@ ul{
 .carousel_width_show{
   width: 500px;
 }
-.carousel_width_index{
+.img_width_index{
   width: 250px;
-  margin-left: 38px;
+  margin: 0 auto;
 }
 .fix{
   background-image: none!important;
@@ -175,6 +176,7 @@ ul{
   width: 70%;
   margin: 0 auto;
   font-size: 18px;
+  text-align: center;
 }
 
 .products_price_box, .my_products_price_box{
@@ -182,6 +184,7 @@ ul{
   width: 70%;
   margin: 0 auto;
   font-size: 18px;
+  text-align: center;
 }
 
 .paginate_box{
@@ -318,6 +321,7 @@ ul{
   width: 70%;
   margin: 0 auto;
   font-size: 18px;
+  text-align: center;
 }
 
 .category_products_price_box{
@@ -325,6 +329,7 @@ ul{
   width: 70%;
   margin: 0 auto;
   font-size: 18px;
+  text-align: center;
 }
 
 

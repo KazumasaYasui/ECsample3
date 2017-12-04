@@ -81,9 +81,10 @@ gem 'syck'
 gem 'enum_help'
 gem 'rails-i18n'
 
+gem 'font-awesome-rails'
+
+gem 'pry-rails'
+
 group :development do
   gem 'bullet'
 end
-
-# add gem
-gem 'pry-rails'

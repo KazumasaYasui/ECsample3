@@ -328,6 +328,7 @@ DEPENDENCIES
   devise
   enum_help
   factory_bot_rails
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari-bootstrap (~> 3.0.1)
